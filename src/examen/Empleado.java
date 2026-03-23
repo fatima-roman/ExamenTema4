@@ -53,7 +53,12 @@ public class Empleado {
 		return porcentajeBonificacion;
 	}
 	public void setPorcentajeBonificacion(double porcentajeBonificacion) {
-		this.porcentajeBonificacion = porcentajeBonificacion;
+		if (porcentajeBonificacion > 30 || porcentajeBonificacion < 0) {
+			System.out.println("Porcentaje fuera de rango. Valor por defecto 5%");
+			this.porcentajeBonificacion = 5;
+		}else {
+			this.porcentajeBonificacion = porcentajeBonificacion;
+		}
 	}
 	public double getPrecioHoraExtra() {
 		return precioHoraExtra;
