@@ -11,7 +11,7 @@ public class Main {
         int opc =0;
         try {
             do {
-                System.out.println("1. Añadir vehículo\r\n"
+                System.out.println("1. Añadir empleado\r\n"
                 + "2. Listar empleados\r\n"
                 + "3. Buscar empleado por DNI\r\n"
                 + "4. Modificar horas extras\r\n"

@@ -24,14 +24,22 @@ public class ListaEmpleados {
         double porcentajeBonifica = pedirPorcentaje();
         Empleado empleado = new Empleado(dni, nombre, salarioBase, porcentajeBonifica);
         
-        empleado.setCalculoBonificacion();
-        empleado.setCalculoHorasExtra();
-        empleado.setSalarioTotal();
+        modificarDatosExtraEmpleado(empleado);
         
         return empleado; 
     }
     
     /**
+     * Modifica el salario y calculos totales 
+     * @param empleado el empleado a modificar 
+     */
+    private static void modificarDatosExtraEmpleado(Empleado empleado) {
+        empleado.setCalculoBonificacion();
+        empleado.setCalculoHorasExtra();
+        empleado.setSalarioTotal();		
+	}
+
+	/**
      * Lee dni para no repetir el código 
      * @return dni con valor asignado 
      */
@@ -71,7 +79,6 @@ public class ListaEmpleados {
     	return precio;
     }
     
-    
 
     /**
      * Añade al empleado en la lista de valores 
@@ -96,7 +103,8 @@ public class ListaEmpleados {
     		return; 
     	}
     	for (Empleado empleado : (Iterable<Empleado>) empleadosLista.values()) {
-            System.out.println(empleado.toString());
+           modificarDatosExtraEmpleado(empleado);
+    		System.out.println(empleado.toString());
         }
     }
     
@@ -122,6 +130,7 @@ public class ListaEmpleados {
      */
     public static boolean modificarHorasExtra(String dni, int horas) {
         Empleado modificar = buscarPorDni(dni);
+        modificarDatosExtraEmpleado(modificar);
         if (modificar == null) {
             System.out.println(MENSAJE_ERROR);
             return false;
@@ -140,6 +149,7 @@ public class ListaEmpleados {
      */
     public static boolean modificarBonificacion(String dni, double porcentaje) {
         Empleado modificar = buscarPorDni(dni);
+        modificarDatosExtraEmpleado(modificar);
         if (modificar == null) {
             System.out.println(MENSAJE_ERROR);
             return false;
